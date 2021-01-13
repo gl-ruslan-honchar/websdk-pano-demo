@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Pixellot web sdk</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="./style.css">
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <div class="content-container">
+                <div class='flex-item controls-container'>
+                    <div class="controls-item-container">
+                        <form id="source-form">
+                            <div class="form-wrapper">
+                                <div class="input-wrapper">
+                                    <select name="source" id="stream-source-select" >
+                                        <option value="./pano-copied_Trim.mp4">Test MP4 Local Pano</option>
+                                        <option value="https://d43v2xuope5yr.cloudfront.net/ringnet/5ffeefbc3e3d515f85e4e749/cloud_hls/0_pano_hls.m3u8">Test HLS Pano</option>
+                                        <option value="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4">Test MP4 HD</option>
+                                        <option value="">Custom option</option>
+                                    </select>
+                                </div>
+                                <div class="input-wrapper">
+                                    <input type="text" class="form-element" name="source" id="stream-source-input" placeholder="Source URL"/>
+                                </div>
+                                <div class="submit-button">
+                                    <button type="submit" class="form-element">Load Video</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class='flex-item player-container'>
+                    <div class='player-wrapper'>
+                        <div class="aspect-ratio-box">
+                            <div class="aspect-ratio-box-inside">
+                                <div id="player"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="message-container">
+                    <ol id='message-list'></ol>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+        <script src="./scripts/sdk.js"></script>
+        <script src="./scripts/index.js"></script>
+    </body>
+</html>
