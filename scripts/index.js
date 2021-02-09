@@ -36,20 +36,23 @@ window.addEventListener('load', () => {
         }
 
         player.setTitle('Pano POC Demo');
-        player.setStreamNames(['hd', 'pano']);
-        player.setActiveStreamName('hd');
-        player.setSwitchSelectCallback((streamName) => {
-            resetPlayer(() => {
-                if (streamName === 'hd') {
-                } else {
-                    window.player.pluginManager.registerPlugin(panoPlugin);
-                }
+        // player.setStreamNames(['hd', 'pano']);
+        // player.setActiveStreamName('hd');
+        //
+        // player.setSwitchSelectCallback((streamName) => {
+        //     // resetPlayer(() => {
+        //     //     if (streamName === 'hd') {
+        //     //     } else {
+        //     //         window.player.pluginManager.registerPlugin(panoPlugin);
+        //     //     }
+        //     //
+        //     //     window.player.setActiveStreamName(streamName);
+        //     //     playSource();
+        //     //     player.vdjsPlayer.getChild('Canvas').handleResize();
+        //     // });
+        // })
 
-                window.player.setActiveStreamName(streamName);
-                playSource();
-                player.vdjsPlayer.getChild('Canvas').handleResize();
-            });
-        })
+        player.pluginManager.registerPlugin(panoPlugin);
 
 
         return player;
