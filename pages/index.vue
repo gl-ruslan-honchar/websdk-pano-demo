@@ -39,7 +39,7 @@ export default {
   name: "MainPage",
   data () {
     return {
-      videoData: { title: 'Test Pano video', link: '/pano-test.mp4'},
+      videoData: { title: 'Test Pano video', link: '/websdk-pano-demo/pano-test.mp4'},
       videoLinkOptions: [
         { title: 'Test Pano video', link: '/websdk-pano-demo/pano-test.mp4'},
         { title: 'Simple video', link: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4' },
