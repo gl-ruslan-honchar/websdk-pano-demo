@@ -19,6 +19,10 @@ export default {
     ]
   },
 
+  router: {
+    base: '/websdk-pano-demo/'
+  },
+
   css: [],
   plugins: [],
   target: 'static',
