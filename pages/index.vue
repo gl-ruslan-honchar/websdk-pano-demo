@@ -56,9 +56,10 @@ export default {
   },
   data () {
     return {
-      videoData: { title: 'Test Pano video', link: '/websdk-pano-demo/pano-test.mp4'},
+      videoData: { title: 'Test Pano video 1', link: '/websdk-pano-demo/pano-test1.mp4'},
       videoLinkOptions: [
-        { title: 'Test Pano video', link: '/websdk-pano-demo/pano-test.mp4'},
+        { title: 'Test Pano video 1', link: '/websdk-pano-demo/pano-test1.mp4'},
+        { title: 'Test Pano video 2', link: '/websdk-pano-demo/pano-test2.mp4'},
         { title: 'Simple video', link: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4' },
         { title: 'Custom link', link: '', allowCustom: true }
       ]
