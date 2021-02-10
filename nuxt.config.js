@@ -25,6 +25,8 @@ export default {
 
   css: [],
   plugins: [],
+
+  ssr: false,
   target: 'static',
   components: true,
 
