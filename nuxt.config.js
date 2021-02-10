@@ -15,7 +15,7 @@ export default {
     ],
     script: [
       { src: '//imasdk.googleapis.com/js/sdkloader/ima3.js' },
-      { src: '/pixellot-web-sdk.js' }
+      { src: '/websdk-pano-demo/pixellot-web-sdk.js' }
     ]
   },
 
