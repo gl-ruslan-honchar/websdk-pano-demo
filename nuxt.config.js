@@ -11,7 +11,7 @@ export default {
       { hid: 'description', name: 'description', content: '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: '/websdk-pano-demo/zoom-icon.png' },
     ],
     script: [
       { src: '//imasdk.googleapis.com/js/sdkloader/ima3.js' },
@@ -32,6 +32,13 @@ export default {
     '@nuxt/typescript-build',
     ['@nuxtjs/vuetify', { /* module options */ }]
   ],
+
+  vue: {
+    config: {
+      productionTip: false,
+      devtools: true
+    }
+  },
 
   modules: ['@nuxtjs/axios'],
 

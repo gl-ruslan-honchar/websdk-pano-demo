@@ -1,10 +1,10 @@
 <template>
   <div class="pa-6">
     <v-row>
-      <v-col cols="12" md="7" sm="9">
+      <v-col cols="12" md="7">
         <div class="my-6" ref="player" id="player"></div>
       </v-col>
-      <v-col cols="12" md="5" sm="3">
+      <v-col cols="12" md="5">
         <v-row class="py-6">
           <v-col cols="12" md="3" sm="6">
             <strong>Zoom</strong>
@@ -108,6 +108,14 @@
         </v-row>
       </v-col>
     </v-row>
+
+    <v-snackbar v-model="videoLoadError" :timeout="5000" color="error" outlined bottom right>
+      Some error occurred during loading a video
+
+      <template v-slot:action="{ attrs }">
+        <v-btn color="red" text v-bind="attrs" @click="videoLoadError = false" v-text="'Close'" />
+      </template>
+    </v-snackbar>
   </div>
 </template>
 
@@ -125,6 +133,7 @@
     data () {
       return {
         player: null,
+        videoLoadError: false,
 
         zoomPointOptions: [
           { value: 0.01, title: '1%' },
@@ -187,10 +196,11 @@
     },
     methods: {
       loadSource () {
-        const preroll = '';
-        const midrolls = [];
+        this.player.setSource(this.source);
 
-        this.player.setSource(this.source, preroll, midrolls);
+        setTimeout(() => {
+          this.videoLoadError = Boolean(this.player.vdjsPlayer.error());
+        }, 300)
       },
 
       applyZoomOptions () {
