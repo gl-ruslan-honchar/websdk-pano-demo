@@ -1,0 +1,9 @@
+.custom-loader {
+  animation: loader 0.5s infinite;
+  display: flex;
+}
+
+@keyframes loader {
+  from { transform: rotate(0); }
+  to { transform: rotate(360deg); }
+}

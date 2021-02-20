@@ -23,7 +23,7 @@ export default {
     base: '/websdk-pano-demo/'
   },
 
-  css: [],
+  css: ['~/assets/main'],
   plugins: [],
 
   ssr: false,

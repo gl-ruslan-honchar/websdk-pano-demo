@@ -3,35 +3,12 @@ const signature = 'uy2Pe0lBYBCjQ8s4ClWx4AUPmOESqXDcWflXBpdYcYeLPRsRpoILeUgOjdmyi
 
 export const createPixellotPlayer = (element, options = {}) => {
   const PixellotWebSDK = window['pixellot-web-sdk'];
-  const { PanoPlugin } = PixellotWebSDK.Plugins;
-  const panoPlugin = {
-    name: 'pano',
-    plugin: PanoPlugin,
-    options: options.zoom || {},
-  };
 
   PixellotWebSDK.Auth.setSession(token, signature);
 
-  const player = PixellotWebSDK.Player(element);
-
+  const player = PixellotWebSDK.Player(element, options);
 
   player.setTitle('Pano POC Demo');
-  player.pluginManager.registerPlugin(panoPlugin);
 
-  // player.setStreamNames(['hd', 'pano']);
-  // player.setActiveStreamName('hd');
-  //
-  // player.setSwitchSelectCallback((streamName) => {
-  //     // resetPlayer(() => {
-  //     //     if (streamName === 'hd') {
-  //     //     } else {
-  //     //         window.player.pluginManager.registerPlugin(panoPlugin);
-  //     //     }
-  //     //
-  //     //     window.player.setActiveStreamName(streamName);
-  //     //     playSource();
-  //     //     player.vdjsPlayer.getChild('Canvas').handleResize();
-  //     // });
-  // })
   return player;
 };
