@@ -134,12 +134,12 @@
 
       resetVideoPositions () {
         this.resetting = !this.applying;
-        this.player.plugins.pano.reset()
+        this.player.plugins.pano.reset();
 
         setTimeout(() => {
           this.resetting = false;
           this.applying = false;
-        }, 1000);
+        }, 500);
       }
     }
   }

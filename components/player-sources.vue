@@ -116,7 +116,7 @@
 
         setTimeout(() => {
           this.loadingVideo = false;
-        }, 1000);
+        }, 500);
       }
     }
   }
