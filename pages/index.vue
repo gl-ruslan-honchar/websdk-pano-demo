@@ -25,8 +25,9 @@ export default {
   data () {
     return {
       videoData: {
-        hd: { title: 'Test Pano video 1', link: '/websdk-pano-demo/pano-test1.mp4' },
-        pano: {}
+        mode: 'hd',
+        hd: { title: 'Test video', link: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4' },
+        pano: { title: 'Test Pano video 1', link: '/websdk-pano-demo/pano-test1.mp4' },
       }
     }
   }

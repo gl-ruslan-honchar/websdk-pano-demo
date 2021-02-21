@@ -52,12 +52,23 @@
             </v-col>
           </v-row>
 
-          <v-col cols="12" align="end">
-            <v-btn color="indigo" class="white--text" :disabled="!videoData.hd.link || loadingVideo" :loading="loadingVideo" @click="loadVideo" outlined large>
-              Load video to player
-              <v-icon v-text="'mdi-cloud-upload'" right dark />
-            </v-btn>
-          </v-col>
+          <v-row>
+            <v-col cols="12" md="4">
+              <v-select
+                v-model="videoData.mode"
+                :items="[{id: 'hd', title: 'HD mode'}, {id: 'pano', title: 'Pano mode'}]"
+                item-text="title"
+                item-value="id"
+                label="Default video mode"
+              />
+            </v-col>
+            <v-col cols="12" md="8" align="end">
+              <v-btn color="indigo" class="white--text" :disabled="!canLoadVideo" :loading="loadingVideo" @click="loadVideo" outlined large>
+                Load video to player
+                <v-icon v-text="'mdi-cloud-upload'" right dark />
+              </v-btn>
+            </v-col>
+          </v-row>
         </div>
 
       </v-expansion-panel-content>
@@ -89,6 +100,13 @@
             { title: 'Custom link', link: '', allowCustom: true }
           ]
         }
+      }
+    },
+    computed: {
+      canLoadVideo () {
+        return this.loadingVideo || this.videoData.mode === 'hd'
+          ? this.videoData.hd.link
+          : this.videoData.pano.link;
       }
     },
     methods: {

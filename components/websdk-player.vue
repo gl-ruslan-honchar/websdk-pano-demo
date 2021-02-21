@@ -36,11 +36,11 @@
       </v-col>
     </v-row>
 
-    <v-snackbar v-model="videoLoadError" :timeout="5000" color="error" outlined bottom right>
-      Some error occurred during loading a video
+    <v-snackbar v-model="videoLoadError.value" :timeout="5000" color="error" outlined bottom right>
+      {{ videoLoadError.message }}
 
       <template v-slot:action="{ attrs }">
-        <v-btn color="red" text v-bind="attrs" @click="videoLoadError = false" v-text="'Close'" />
+        <v-btn color="red" text v-bind="attrs" @click="videoLoadError.value = false" v-text="'Close'" />
       </template>
     </v-snackbar>
   </div>
@@ -69,7 +69,10 @@
 
         player: null,
         playerOptions,
-        videoLoadError: false,
+        videoLoadError: {
+          value: false,
+          message: ''
+        },
       }
     },
     mounted() {
@@ -79,16 +82,33 @@
 
       this.player = createPixellotPlayer(this.$refs.player, this.playerOptions.configuration);
 
-      if (this.source.hd.link) {
-        this.loadSource()
-      }
+      this.loadSource()
     },
     methods: {
       loadSource () {
-        this.player.setSource(this.source.hd.link);
+        const hdExist = this.source.mode === 'hd' ? this.source.hd.link : true;
+        const panoExist = this.source.mode === 'pano' ? this.source.pano.link : true;
+
+        if (!hdExist || !panoExist) {
+          this.videoLoadError = {
+            value: true,
+            message: `Please select video source for ${this.source.mode} mode!`
+          };
+
+          return;
+        }
+
+        if (this.source.mode === 'hd') {
+          this.player.setSource(this.source.hd.link);
+        } else {
+          this.player.setSource(this.source.pano.link);
+        }
 
         setTimeout(() => {
-          this.videoLoadError = Boolean(this.player.vdjsPlayer.error());
+          this.videoLoadError = {
+            value: Boolean(this.player.vdjsPlayer.error()),
+            message: 'Some error occurred during loading a video'
+          };
         }, 300)
       },
 
