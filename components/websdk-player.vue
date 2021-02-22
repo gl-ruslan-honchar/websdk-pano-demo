@@ -98,11 +98,12 @@
           return;
         }
 
-        if (this.source.mode === 'hd') {
-          this.player.setSource(this.source.hd.link);
-        } else {
-          this.player.setSource(this.source.pano.link);
+        const sources = {
+          hd: this.source.hd.link,
+          pano: this.source.pano.link,
         }
+
+        this.player.setSource(sources, null, null, this.source.mode);
 
         setTimeout(() => {
           this.videoLoadError = {
