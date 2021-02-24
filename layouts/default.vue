@@ -20,7 +20,7 @@
             <v-btn href="https://gl-ruslan-honchar.github.io/WebSDK-docs/guide/" target="_blank" color="white" rounded text>
               Developers Docs.v1
             </v-btn>
-            <v-btn href="/docs/index.html" target="_blank" color="white" rounded text>
+            <v-btn href="/websdk-pano-demo/docs/index.html" target="_blank" color="white" rounded text>
               Developers Docs.v2
             </v-btn>
           </v-col>

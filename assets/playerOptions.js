@@ -2,8 +2,8 @@ export default {
   configuration: {
     pano: {
       showZoomUI: true,
-      defaultZoom: 1,
-      minZoom: 1,
+      defaultZoom: 3,
+      minZoom: 2.5,
       maxZoom: 5,
     }
   },

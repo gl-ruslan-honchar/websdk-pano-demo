@@ -91,7 +91,8 @@
         loadingVideo: false,
         videoLinkOptions: {
           hd: [
-            { title: 'Test video', link: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4' },
+            { title: 'Test video 1', link: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4' },
+            { title: 'Test video 2', link: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4' },
             { title: 'Custom link', link: '', allowCustom: true }
           ],
           pano: [
