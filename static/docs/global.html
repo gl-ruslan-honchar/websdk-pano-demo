@@ -66,7 +66,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-Player.html">Player</a></li><li><a href="module-Plugins.html">Plugins</a></li></ul><h3>Classes</h3><ul><li><a href="module-Player.Core.html">Core</a></li><li><a href="module-Player.Player.html">Player</a></li><li><a href="module-Player.Plugin.html">Plugin</a></li><li><a href="module-Player.VideoJSPlayer.html">VideoJSPlayer</a></li><li><a href="module-Plugins.PanoPlugin.html">PanoPlugin</a></li><li><a href="module-Plugins.TitlePlugin.html">TitlePlugin</a></li></ul><h3>Global</h3><ul><li><a href="global.html#registerManager">registerManager</a></li><li><a href="global.html#registerManagers">registerManagers</a></li><li><a href="global.html#registerPlugin">registerPlugin</a></li><li><a href="global.html#registerPlugins">registerPlugins</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-Player.html">Player</a></li><li><a href="module-Plugins.html">Plugins</a></li></ul><h3>Classes</h3><ul><li><a href="module-Player.Player.html">Player</a></li><li><a href="module-Player.Plugin.html">Plugin</a></li><li><a href="module-Plugins.PanoPlugin.html">PanoPlugin</a></li><li><a href="module-Plugins.TitlePlugin.html">TitlePlugin</a></li></ul><h3>Global</h3><ul><li><a href="global.html#registerManager">registerManager</a></li><li><a href="global.html#registerManagers">registerManagers</a></li><li><a href="global.html#registerPlugin">registerPlugin</a></li><li><a href="global.html#registerPlugins">registerPlugins</a></li></ul></div>
                 
             </nav>
         </div>
@@ -521,7 +521,7 @@ that passes to manager during creation.</td>
         
         <span class="code-name">
             
-                registerPlugin<span class="signature">(PlayerPlugin, options, commonOptions)</span><span class="type-signature"></span>
+                registerPlugin<span class="signature">(PlayerPlugin, options<span class="signature-attributes">opt</span>, commonOptions<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -555,6 +555,8 @@ that passes to manager during creation.</td>
             <th>Type</th>
 
             
+            <th>Attributes</th>
+            
 
             
 
@@ -581,11 +583,20 @@ that passes to manager during creation.</td>
   </td>
 
   
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
 
   
 
   <td class="description last">class of plugin
-which instance will be attached to player with followed options.</td>
+which instance will be attached to player with exposed options.
+Should extend <a href="module-Player.Plugin.html">Plugin</a>.</td>
 </tr>
 
 
@@ -606,6 +617,16 @@ which instance will be attached to player with followed options.</td>
   
   </td>
 
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
   
 
   
@@ -633,11 +654,21 @@ that passes to plugin during creation.</td>
   </td>
 
   
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
 
   
 
   <td class="description last">Additional parameters
-that passes to plugin during creation.(passed from player or when registered multiple plugins)</td>
+that passes to plugin during creation.(usually passed from player or when registered multiple plugins)</td>
 </tr>
 
 
@@ -702,6 +733,22 @@ that passes to plugin during creation.(passed from player or when registered mul
 
 
 
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>class CustomPlugin extends Plugin {
+    constructor(player, options) {
+        super(player, options)
+        //
+    }
+    //
+}
+
+player.manager.registerPlugin(CustomPlugin);
+player.manager.registerPlugin(CustomPlugin, { /\* options /\* });</code></pre>
+    
 
 
 </div>
@@ -868,6 +915,16 @@ that passes to plugin during creation.(passed from player or when registered mul
 
 
 
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>// class CustomPlugin extends Plugin
+
+player.manager.registerPlugins([CustomPlugin]);
+player.manager.registerPlugin([CustomPlugin, [CustomPlugin2, { /\* options /\* }] ]);</code></pre>
+    
 
 
 </div>
