@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <player-sources :video-data="videoData" />
+    <player-sources ref="playerSources" :video-data="videoData" />
 
     <v-row>
       <v-col cols="12">
@@ -28,6 +28,19 @@ export default {
         mode: 'hd',
         hd: { title: 'Test video 1', link: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4' },
         pano: { title: 'Test Pano video 1', link: '/websdk-pano-demo/pano-test1.mp4' },
+      }
+    }
+  },
+  mounted() {
+    this.preselectSource(2)
+  },
+  methods: {
+    preselectSource(index) {
+      const options = this.$refs.playerSources && this.$refs.playerSources.videoLinkOptions || null
+
+      if (options) {
+        this.videoData.hd = options.hd[index]
+        this.videoData.pano = options.pano[index]
       }
     }
   }
