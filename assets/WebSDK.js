@@ -4,7 +4,11 @@ const signature = 'uy2Pe0lBYBCjQ8s4ClWx4AUPmOESqXDcWflXBpdYcYeLPRsRpoILeUgOjdmyi
 export const createPixellotPlayer = (element, options = {}) => {
   const PixellotWebSDK = window['pixellot-web-sdk'];
 
-  PixellotWebSDK.SDKApi.auth.setSession(token, signature);
+  try {
+    PixellotWebSDK.SDKApi.auth.setSession(token, signature);
+  } catch (error) {
+    console.error('Error during setting auth session', error)
+  }
 
   const player = PixellotWebSDK.Player(element, options);
 

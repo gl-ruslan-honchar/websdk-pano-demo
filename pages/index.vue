@@ -15,6 +15,7 @@
 <script>
 import PlayerSources from "~/components/player-sources";
 import WebsdkPlayer from "~/components/websdk-player";
+import videoSources from '~/assets/player-sources';
 
 export default {
   name: "MainPage",
@@ -26,21 +27,8 @@ export default {
     return {
       videoData: {
         mode: 'hd',
-        hd: { title: 'Test video 1', link: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4' },
-        pano: { title: 'Test Pano video 1', link: '/websdk-pano-demo/pano-test1.mp4' },
-      }
-    }
-  },
-  mounted() {
-    this.preselectSource(2)
-  },
-  methods: {
-    preselectSource(index) {
-      const options = this.$refs.playerSources && this.$refs.playerSources.videoLinkOptions || null
-
-      if (options) {
-        this.videoData.hd = options.hd[index]
-        this.videoData.pano = options.pano[index]
+        hd: videoSources.hd[2],
+        pano: videoSources.pano[2]
       }
     }
   }

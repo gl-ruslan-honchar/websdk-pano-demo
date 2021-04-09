@@ -77,6 +77,8 @@
 </template>
 
 <script>
+  import videoSources from '~/assets/player-sources'
+
   export default {
     name: "player-sources",
     props: {
@@ -89,20 +91,7 @@
       return {
         toggles: [],
         loadingVideo: false,
-        videoLinkOptions: {
-          hd: [
-            { title: 'Test video 1', link: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4' },
-            { title: 'Test video 2', link: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4' },
-            { title: 'Test video 3', link: 'https://content.you.pixellot.tv/events/60647fca01de9f4d0aaea3dd/hd/hd_1617210111039.m3u8' },
-            { title: 'Custom link', link: '', allowCustom: true }
-          ],
-          pano: [
-            { title: 'Test Pano video 1', link: '/websdk-pano-demo/pano-test1.mp4'},
-            { title: 'Test Pano video 2', link: '/websdk-pano-demo/pano-test2.mp4'},
-            { title: 'Test Pano video 3', link: 'https://content.you.pixellot.tv/events/60647fca01de9f4d0aaea3dd/pano/panorama.m3u8' },
-            { title: 'Custom link', link: '', allowCustom: true }
-          ]
-        }
+        videoLinkOptions: videoSources
       }
     },
     computed: {
