@@ -1,3 +1,5 @@
+const isDev = process.env.NODE_ENV === 'development'
+
 export default {
   head: {
     titleTemplate: '%s',
@@ -15,8 +17,7 @@ export default {
     ],
     script: [
       { src: '//imasdk.googleapis.com/js/sdkloader/ima3.js' },
-      { src: '/websdk-pano-demo/pixellot-web-sdk.js' }
-      // { src: 'http://localhost:8080/pixellot-web-sdk.js' }
+      { src: isDev ? 'http://localhost:8080/pixellot-web-sdk.js' : '/websdk-pano-demo/pixellot-web-sdk.js' }
     ]
   },
 
