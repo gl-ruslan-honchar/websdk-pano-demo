@@ -80,9 +80,13 @@
         return
       }
 
-      this.player = createPixellotPlayer(this.$refs.player, this.playerOptions.configuration);
+      try {
+        this.player = createPixellotPlayer(this.$refs.player, this.playerOptions.configuration);
 
-      this.loadSource()
+        this.loadSource()
+      } catch (error) {
+        console.log(error)
+      }
     },
     methods: {
       loadSource () {
