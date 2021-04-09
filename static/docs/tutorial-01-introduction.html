@@ -5,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pixellot WebSDK Documentation Home</title>
+  <title>Pixellot WebSDK Documentation Introduction</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -96,56 +96,81 @@
 </div>
     <div id="main">
         <div
-            class="sidebar "
+            class="sidebar tutorials"
             id="sidebarNav"
         >
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Player</h2><h3>Namespaces</h3><ul><li><a href="Player.Ads.html">Ads</a></li><li><a href="Player.Analytics.html">Analytics</a></li><li><a href="Player.Events.html">Events</a></li></ul><h3>Classes</h3><ul><li><a href="Player.html">Player</a></li></ul><h3>Events</h3><ul><li><a href="Player.html#event:source-changed">source-changed</a></li><li><a href="Player.html#event:player:ended">player:ended</a></li><li><a href="Player.html#event:player:error">player:error</a></li><li><a href="Player.html#event:player:fullscreenchange">player:fullscreenchange</a></li><li><a href="Player.html#event:player:loadedmetadata">player:loadedmetadata</a></li><li><a href="Player.html#event:player:seeking">player:seeking</a></li><li><a href="Player.html#event:player:timeupdate">player:timeupdate</a></li></ul></div><div class="category"><h2>Plugins</h2><h3>Classes</h3><ul><li><a href="ClipCreatePlugin.html">ClipCreatePlugin</a></li><li><a href="Plugin.html">Plugin</a></li><li><a href="TagCreatePlugin.html">TagCreatePlugin</a></li><li><a href="TagPlugin.html">TagPlugin</a></li><li><a href="TimeMovePlugin.html">TimeMovePlugin</a></li></ul></div><div class="category"><h2>SDKApi</h2><h3>Namespaces</h3><ul><li><a href="SDKApi.html">SDKApi</a></li><li><a href="SDKApi.auth.html">auth</a></li></ul></div>
+                    <div class="category"><h3>Tutorials</h3><ul><li><a href="tutorial-01-introduction.html">Introduction</a></li><li><a href="tutorial-02-projectid-generation.html">ProjectID Generation</a></li><li><a href="tutorial-03-plugin-setup.html">Plugins Setup</a></li><li><a href="tutorial-04-sdk-api.html">SDK API</a></li><li><a href="tutorial-05-migration-1x.html">Migration from 1.x version</a></li></ul></div>
                 
             </nav>
         </div>
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Tutorial</p>
+                    <h1>Introduction</h1>
                 </header>
-                
+                <section>
 
-
-
-    
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-    <section>
-        <article><h2>Pixellot WebSDK Player Documentation</h2>
-<p>Pixellot WebSDK allows you to create a video player with some expanded functionality.</p>
+<article>
+    <p>Pixellot WebSDK allows you to create a video player with some expanded functionality.</p>
 <p>Player have support of all main video playbacks including HLS video files.</p>
-<p>Check out Tutorials and API sections.</p></article>
-    </section>
+<p>Check out Tutorials and API sections.</p>
+<h1>Quick start</h1>
+<p>Here is our quick start with the WebSDK.</p>
+<h4>1. Include pixellot web-sdk script.</h4>
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://pixellot-web-sdk.pixellot.tv/v-{version}/pixellot-web-sdk.js&quot;>&lt;/script>
+</code></pre>
+<ul>
+<li>In case you want to use <a href="Player.Ads.html">Player Ads Manager</a>, following script is required.</li>
+</ul>
+<pre class="prettyprint source lang-html"><code>&lt;script type=&quot;text/javascript&quot; src=&quot;//imasdk.googleapis.com/js/sdkloader/ima3.js&quot;>&lt;/script>
+</code></pre>
+<h4>2. Player setup.</h4>
+<p>HTML:</p>
+<pre class="prettyprint source lang-html"><code> &lt;div id=&quot;player&quot;>&lt;/div>
+</code></pre>
+<p>Script:</p>
+<pre class="prettyprint source lang-js"><code>const container = document.getElementById('player');
+const WebSDK = window['pixellot-web-sdk'];
 
+const projectId = '00x00xxxx000xx00x0';
+const player = WebSDK.Player(container); // or with `new` keyword
 
+// Important to set your project id at the beggining.
+// Later it's used for analytics & also required when you do api calls using SDKApi. 
+WebSDK.SDKApi.auth.setProjectID(projectId);
 
+player.setSource('/public/video-sample.mp4');
+player.play();
+</code></pre>
+<h4>3. Plugins setup (optional)</h4>
+<p>Check out <a href="Player.html#registerPlugin">plugins registration</a> and <a href="Plugin.html">plugins section</a></p>
+<pre class="prettyprint source lang-js"><code>const { TimeMovePlugin, ClipCreatePlugin } = window['pixellot-web-sdk'].Plugins;
+const plugins = [
+    ClipCreatePlugin,
+    [TimeMovePlugin, { /* options */ }]
+]
 
+player.registerPlugins(plugins);
 
+// player.setSource('/public/video-sample.mp4');
+// player.play();
+
+player.startRecording();
+// or player.plugins.clipCreate.startRecording(); // but not recommended!
+
+setTimeout(() => {
+    player.stopRecording();
+}, 5000);
+
+// New clip is created after 5 sec.
+</code></pre>
+</article>
+
+</section>
 
             </div>
             

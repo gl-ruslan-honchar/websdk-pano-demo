@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pixellot WebSDK Documentation SDK API</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Pixellot WebSDK Documentation</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                <div class="dropdown is-hoverable is-right">
+                    <a class="dropdown-trigger link">
+                        Tutorials
+                        <i class="fas fa-chevron-down fa-xs"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                        
+                            <a class="dropdown-item" href="tutorial-01-introduction.html">
+                                Introduction
+                            </a>
+                        
+                            <a class="dropdown-item" href="tutorial-02-projectid-generation.html">
+                                ProjectID Generation
+                            </a>
+                        
+                            <a class="dropdown-item" href="tutorial-03-plugin-setup.html">
+                                Plugins Setup
+                            </a>
+                        
+                            <a class="dropdown-item" href="tutorial-04-sdk-api.html">
+                                SDK API
+                            </a>
+                        
+                            <a class="dropdown-item" href="tutorial-05-migration-1x.html">
+                                Migration from 1.x version
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar tutorials"
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <div class="category"><h3>Tutorials</h3><ul><li><a href="tutorial-01-introduction.html">Introduction</a></li><li><a href="tutorial-02-projectid-generation.html">ProjectID Generation</a></li><li><a href="tutorial-03-plugin-setup.html">Plugins Setup</a></li><li><a href="tutorial-04-sdk-api.html">SDK API</a></li><li><a href="tutorial-05-migration-1x.html">Migration from 1.x version</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Tutorial</p>
+                    <h1>SDK API</h1>
+                </header>
+                <section>
+
+<article>
+    <p>In order if you want to use SDK API you need to set up an authentication.</p>
+<h1>Authentication</h1>
+<p>When you got user's token and signature, the process of authentication is simple and straightforward.</p>
+<p>In cases if you want to use SDK api methods you need to set projectID.</p>
+<p>You can get projectID from partnerAPI</p>
+<p>You can find more info <a href="SDKApi.auth.html">here</a></p>
+<pre class="prettyprint source lang-js"><code>const projectId = '00x00xxxx000xx00x0';
+const token = '000XXXX0X0X0X0000X0X00X00X0X0X00X00X00X0X0XXXXX000';
+const signature = 'piug*f&^r&R7T8y*y*ty&*t&^duvuf&^t(hpjp:m:kgrf&dcycugoy'
+const { SDKApi } = window['pixellot-web-sdk'];
+
+SDKApi.auth.setSession(token, signature);
+SDKApi.auth.setProjectID(projectId);
+</code></pre>
+<p>In order to reset session:</p>
+<pre class="prettyprint source lang-js"><code>SDKApi.auth.invalidateSession();
+</code></pre>
+<h1>Clips API</h1>
+<p>Api service for communication with Clips BE: creation/getting clips &amp; highlights.</p>
+<p>You can find more info <a href="SDKApi.html">here</a></p>
+<ul>
+<li>Clips creation usage:</li>
+</ul>
+<pre class="prettyprint source lang-js"><code>const { SDKApi } = window['pixellot-web-sdk'];
+const options = { useMusic: false, clipType: 'highlight', name: 'My Clip' }
+
+SDKApi.createClip(options)
+</code></pre>
+<ul>
+<li>
+<ul>
+<li>Success response example:</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint source lang-js"><code>{
+    &quot;duration&quot;: {
+        &quot;startTime&quot;: 2,
+        &quot;endTime&quot;: 5
+    },
+    &quot;targetId&quot;: &quot;5c36fed232ee4b7e85a82e0d&quot;,
+    &quot;name&quot;: &quot;5c36fed232ee4b7e85a82e0d [2-5]&quot;,
+    &quot;userId&quot;: &quot;some-test-user&quot;,
+    &quot;status&quot;: &quot;creating&quot;,
+    &quot;createdAt&quot;: &quot;2019-07-22T12:41:26.309Z&quot;,
+    &quot;clipType&quot;: &quot;clip&quot;,
+    &quot;segments&quot;: [],
+    &quot;id&quot;: &quot;5d35aef6ffa15500650eaa1d&quot;
+}
+</code></pre>
+<ul>
+<li>To get a list of clips:</li>
+</ul>
+<pre class="prettyprint source lang-js"><code>const options = { limit: 10, offset: 0 };
+
+SDKApi.getClips(options)
+</code></pre>
+<ul>
+<li>
+<ul>
+<li>Success response example:</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint source lang-js"><code>{
+    &quot;result&quot;: [{
+        &quot;urls&quot;: {
+            &quot;m3u8&quot;: {
+                &quot;clip&quot;: &quot;https://d32fqct3tkkk7v.cloudfront.net/pixelClubs/users/some-test-user/clips/5cdd3d59c47bff117933c855/83f95981-f2c1-41fe-b8bf-c96651ee4218.m3u8&quot;,
+                &quot;thumbnail&quot;: &quot;https://d32fqct3tkkk7v.cloudfront.net/pixelClubs/users/some-test-user/clips/5cdd3d59c47bff117933c855/scene0.png&quot;
+            }
+        },
+        &quot;duration&quot;: {
+            &quot;startTime&quot;: 100,
+            &quot;endTime&quot;: 110
+        },
+        &quot;targetId&quot;: &quot;5cc2c6fe13e2584a6637b95d&quot;,
+        &quot;name&quot;: &quot;Yuri-clip&quot;,
+        &quot;streamName&quot;: &quot;pano&quot;,
+        &quot;userId&quot;: &quot;some-test-user&quot;,
+        &quot;status&quot;: &quot;created&quot;,
+        &quot;createdAt&quot;: &quot;2019-05-16T10:37:13.419Z&quot;,
+        &quot;clipType&quot;: &quot;clip&quot;,
+        &quot;segments&quot;: [{
+            &quot;_id&quot;: &quot;5cdd3dd9c47bff117933c856&quot;,
+            &quot;clip&quot;: &quot;pixelClubs/users/some-test-user/clips/5cdd3d59c47bff117933c855/scene0.mp4&quot;,
+            &quot;thumbnail&quot;: &quot;pixelClubs/users/some-test-user/clips/5cdd3d59c47bff117933c855/scene0.png&quot;
+        }],
+        &quot;bucket&quot;: &quot;pixellot-msdk-clips-dev&quot;,
+        &quot;id&quot;: &quot;5cdd3d59c47bff117933c855&quot;
+    }],
+    &quot;total&quot;: 71
+}
+</code></pre>
+<ul>
+<li>To get a single clip by ID:</li>
+</ul>
+<pre class="prettyprint source lang-js"><code>const id = 'ad34627765388f';
+
+SDKApi.getClipById(id)
+</code></pre>
+<ul>
+<li>
+<ul>
+<li>Success response example:</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint source lang-js"><code>{
+    &quot;urls&quot;: {
+        &quot;m3u8&quot;: {
+            &quot;clip&quot;: &quot;https://d32fqct3tkkk7v.cloudfront.net/pixelClubs/users/some-test-user/clips/5d35c06effa15500650eaa21/e3ceffa6-af78-48bf-a6b9-0b9302699a81.m3u8&quot;,
+            &quot;thumbnail&quot;: &quot;https://d32fqct3tkkk7v.cloudfront.net/pixelClubs/users/some-test-user/clips/5d35c06effa15500650eaa21/scene0.png&quot;
+        }
+    },
+    &quot;duration&quot;: {
+        &quot;startTime&quot;: 1,
+        &quot;endTime&quot;: 3
+    },
+    &quot;targetId&quot;: &quot;5c36fed232ee4b7e85a82e0d&quot;,
+    &quot;name&quot;: &quot;5c36fed232ee4b7e85a82e0d [1-3]&quot;,
+    &quot;userId&quot;: &quot;some-test-user&quot;,
+    &quot;status&quot;: &quot;created&quot;,
+    &quot;createdAt&quot;: &quot;2019-07-22T13:55:58.118Z&quot;,
+    &quot;clipType&quot;: &quot;clip&quot;,
+    &quot;segments&quot;: [{
+        &quot;_id&quot;: &quot;ad34627765388f&quot;,
+        &quot;clip&quot;: &quot;https://d32fqct3tkkk7v.cloudfront.net/pixelClubs/users/some-test-user/clips/5d35c06effa15500650eaa21/scene0.mp4&quot;,
+        &quot;thumbnail&quot;: &quot;https://d32fqct3tkkk7v.cloudfront.net/pixelClubs/users/some-test-user/clips/5d35c06effa15500650eaa21/scene0.png&quot;
+    }],
+    &quot;bucket&quot;: &quot;pixellot-msdk-clips-dev&quot;,
+    &quot;id&quot;: &quot;ad34627765388f&quot;
+}
+</code></pre>
+<h1>Tags API</h1>
+<p>Api service for communication with Tags BE: creation/getting tags.</p>
+<h2>You can find more info <a href="SDKApi.html">here</a>
+Usage:</h2>
+<hr>
+<ul>
+<li>To create tag:</li>
+</ul>
+<pre class="prettyprint source lang-js"><code>const { SDKApi } = window['pixellot-web-sdk'];
+const options = { streamName: 'hd', mode: 'sync', videoType: 'live' };
+
+SDKApi.createTag(options)
+</code></pre>
+<ul>
+<li>
+<ul>
+<li>Sample JSON response from the backend:</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint source lang-js"><code>
+{
+    &quot;data&quot;: {
+        &quot;id&quot;: &quot;5e7ca422e4386685f47971bc&quot;,
+        &quot;userId&quot;: &quot;some-test-user&quot;,
+        &quot;targetId&quot;: &quot;5c36fed232ee4b7e85a82e0d&quot;,
+        &quot;type&quot;: &quot;basketball_dunk&quot;,
+        &quot;timeTS&quot;: 1547125139.1853635,
+        &quot;timePTS&quot;: 49483,
+        &quot;leftOffset&quot;: 5000,
+        &quot;rightOffset&quot;: 10000,
+        &quot;createdAt&quot;: &quot;2020-03-26T12:46:26.218Z&quot;,
+        &quot;metadata&quot;: {},
+        &quot;status&quot;: &quot;sync&quot;
+    }
+}
+</code></pre>
+<ul>
+<li>To get a list of tags:</li>
+</ul>
+<pre class="prettyprint source lang-js"><code>const options = { limit: 10, offset: 0, videoType: 'live' };
+
+SDKApi.getTags(options)
+</code></pre>
+<ul>
+<li>
+<ul>
+<li>Sample JSON response from the backend:</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint source lang-js"><code>{   
+    &quot;data&quot;: {
+        &quot;total&quot;: 1,
+        &quot;result&quot;: [
+            {
+                &quot;targetId&quot;: &quot;5bb60e7219491c0a5bb46b69&quot;,
+                &quot;targetType&quot;: &quot;event&quot;,
+                &quot;streamName&quot;: &quot;hd&quot;,
+                &quot;videoType&quot;: &quot;vod&quot;,
+                &quot;timeTS&quot;: 856,
+                &quot;timePTS&quot;: 10000,
+                &quot;type&quot;: &quot;soccer_goal&quot;,
+                &quot;leftOffset&quot;: 1000,
+                &quot;rightOffset&quot;: 1000,
+                &quot;id&quot;: &quot;5bb60e7219491c0a5bb46b69&quot;,
+                &quot;createdAt&quot;: &quot;2018-12-07T13:55:26.807Z&quot;
+            }
+        ]
+    }
+}
+</code></pre>
+</article>
+
+</section>
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

@@ -5,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Plugins</title>
+  <title>Pixellot WebSDK Documentation ProjectID Generation</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -40,6 +40,10 @@
         </a>
         <div class="logo">
             
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Pixellot WebSDK Documentation</h1>
+                </a>
             
         </div>
         <div class="menu">
@@ -52,6 +56,38 @@
                     API Documentation
                 </a>
                 
+                <div class="dropdown is-hoverable is-right">
+                    <a class="dropdown-trigger link">
+                        Tutorials
+                        <i class="fas fa-chevron-down fa-xs"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                        
+                            <a class="dropdown-item" href="tutorial-01-introduction.html">
+                                Introduction
+                            </a>
+                        
+                            <a class="dropdown-item" href="tutorial-02-projectid-generation.html">
+                                ProjectID Generation
+                            </a>
+                        
+                            <a class="dropdown-item" href="tutorial-03-plugin-setup.html">
+                                Plugins Setup
+                            </a>
+                        
+                            <a class="dropdown-item" href="tutorial-04-sdk-api.html">
+                                SDK API
+                            </a>
+                        
+                            <a class="dropdown-item" href="tutorial-05-migration-1x.html">
+                                Migration from 1.x version
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                
                 
                 
             </div>
@@ -60,135 +96,47 @@
 </div>
     <div id="main">
         <div
-            class="sidebar "
+            class="sidebar tutorials"
             id="sidebarNav"
         >
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-Player.html">Player</a></li><li><a href="module-Plugins.html">Plugins</a></li></ul><h3>Classes</h3><ul><li><a href="module-Player.Player.html">Player</a></li><li><a href="module-Player.Plugin.html">Plugin</a></li><li><a href="module-Plugins.PanoPlugin.html">PanoPlugin</a></li><li><a href="module-Plugins.TitlePlugin.html">TitlePlugin</a></li></ul><h3>Global</h3><ul><li><a href="global.html#registerManager">registerManager</a></li><li><a href="global.html#registerManagers">registerManagers</a></li><li><a href="global.html#registerPlugin">registerPlugin</a></li><li><a href="global.html#registerPlugins">registerPlugins</a></li></ul></div>
+                    <div class="category"><h3>Tutorials</h3><ul><li><a href="tutorial-01-introduction.html">Introduction</a></li><li><a href="tutorial-02-projectid-generation.html">ProjectID Generation</a></li><li><a href="tutorial-03-plugin-setup.html">Plugins Setup</a></li><li><a href="tutorial-04-sdk-api.html">SDK API</a></li><li><a href="tutorial-05-migration-1x.html">Migration from 1.x version</a></li></ul></div>
                 
             </nav>
         </div>
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Module</p>
-                    <h1>Plugins</h1>
+                    <p>Tutorial</p>
+                    <h1>ProjectID Generation</h1>
                 </header>
-                
-
-
-
-
-<section>
-
-<header>
-    
-        
-    
-</header>
+                <section>
 
 <article>
-    <div class="container-overview">
-    
-        
-
-        
-    
-    </div>
-    
-    
-
-    
-
-    
-        <h3 class="subsection-title">Classes</h3>
-
-        <dl>
-            <dt><a href="module-Plugins.PanoPlugin.html">PanoPlugin</a></dt>
-            <dd></dd>
-        
-            <dt><a href="module-Plugins.TitlePlugin.html">TitlePlugin</a></dt>
-            <dd></dd>
-        </dl>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+    <p>Before you proceed to use all features of Pixellot WebSDK, firstly you need to generate <code>projectID</code>.</p>
+<p>The <code>projectID</code> is required for <a href="SDKApi.html">SDKApi</a> and <a href="Player.Analytics.html">Analytics</a>.</p>
+<p>To generate it you need to make the following</p>
+<ol>
+<li>Make POST request to Pixellot PartnerAPI on next url: 'https://api.pixellot.tv/v1/sdk/projects'</li>
+<li>Put name of your project in body - <code>project</code> prop.</li>
+<li>That's it - success response will return you the <code>id</code> of newly created project
+which you than can use now as a <code>projectID</code> in Pixellot WebSDK.</li>
+</ol>
+<p>Example of request:</p>
+<pre class="prettyprint source lang-js"><code>fetch('https://api.pixellot.tv/v1/sdk/projects/', {
+ method: 'POST',
+ headers: {
+   'Content-Type': 'application/json',
+   'Authorization': 'YourAuthorizationToken'
+ },
+ body: JSON.stringify({ project: &quot;Test Pixellot SDK Project&quot; })
+})
+</code></pre>
 </article>
 
 </section>
-
-
-
-
-
-
-
-<section>
-
-<header>
-    
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-        
-    
-    </div>
-    
-    
-
-    
-
-    
-        <h3 class="subsection-title">Classes</h3>
-
-        <dl>
-            <dt><a href="module-Plugins.PanoPlugin.html">PanoPlugin</a></dt>
-            <dd></dd>
-        
-            <dt><a href="module-Plugins.TitlePlugin.html">TitlePlugin</a></dt>
-            <dd></dd>
-        </dl>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
-
-
-
 
             </div>
             
