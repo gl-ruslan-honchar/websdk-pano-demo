@@ -4,11 +4,15 @@ const signature = 'uy2Pe0lBYBCjQ8s4ClWx4AUPmOESqXDcWflXBpdYcYeLPRsRpoILeUgOjdmyi
 export const createPixellotPlayer = (element, options = {}) => {
   const PixellotWebSDK = window['pixellot-web-sdk'];
 
-  PixellotWebSDK.Auth.setSession(token, signature);
+  PixellotWebSDK.SDKApi.auth.setSession(token, signature);
 
   const player = PixellotWebSDK.Player(element, options);
 
-  player.setTitle('Pano POC Demo');
+  try {
+    player.setTitle('Pixellot Player');
+  } catch (error) {
+    console.error('Error during setting player title', error)
+  }
 
   return player;
 };
