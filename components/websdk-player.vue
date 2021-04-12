@@ -30,6 +30,11 @@
         </v-row>
         <v-row>
           <v-col cols="12">
+            <player-theme-configs :player="player"/>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="12">
             <player-zoom-configs :player-options="playerOptions"/>
           </v-col>
         </v-row>
@@ -50,12 +55,13 @@
   import { createPixellotPlayer } from "~/assets/WebSDK";
   import playerOptions from "~/assets/playerOptions";
   import PlayerZoomConfigs from "~/components/player-zoom-configs";
+  import PlayerThemeConfigs from "~/components/player-theme-configs";
   import PlayerZoom from "~/components/player-zoom";
   import PlayerPan from "~/components/player-move";
 
   export default {
     name: "websdk-player",
-    components: {PlayerPan, PlayerZoom, PlayerZoomConfigs},
+    components: {PlayerPan, PlayerZoom, PlayerZoomConfigs, PlayerThemeConfigs},
     props: {
       source: {
         type: Object,
