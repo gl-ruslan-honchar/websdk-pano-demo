@@ -28,7 +28,7 @@ export default {
       videoData: {
         mode: 'hd',
         hd: videoSources.hd[2],
-        pano: videoSources.pano[2]
+        pano: videoSources.pano[0]
       }
     }
   }
