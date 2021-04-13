@@ -34,9 +34,9 @@ export default {
   watch: {
     activeThemes (val) {
       if (val === 1) {
-        this.player && this.player.vdjsPlayer.addClass('vjs-theme-dt')
+        this.player && this.player.setTheme('pxlt')
       } else {
-        this.player && this.player.vdjsPlayer.removeClass('vjs-theme-dt')
+        this.player && this.player.setTheme('default')
       }
     }
   }

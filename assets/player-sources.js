@@ -11,6 +11,7 @@ export default {
     { title: 'Test video 1', link: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4' },
     { title: 'Test video 2', link: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4' },
     { title: 'Test video 3', link: 'https://content.you.pixellot.tv/events/60647fca01de9f4d0aaea3dd/hd/hd_1617210111039.m3u8' },
+    { title: 'Test video 4', link: 'https://content.you.dev.pixellot.tv/events/602e5ec9725b619a55d91b89/hd/hd_1613652092605.m3u8' },
     { title: 'Custom link', link: '', allowCustom: true }
   ],
   pano: [
