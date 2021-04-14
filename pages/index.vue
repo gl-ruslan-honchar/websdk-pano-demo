@@ -1,12 +1,16 @@
 <template>
   <v-container>
-    <player-sources ref="playerSources" :video-data="videoData" />
+    <div>
+      <player-sources ref="playerSources" :video-data="videoData" />
+    </div>
 
-    <v-row>
+    <div>
+      <websdk-player ref="playerComponent" :source="videoData" />
+    </div>
+
+    <v-row class="mt-10">
       <v-col cols="12">
-        <v-sheet class="mt-6" min-height="50vh" rounded="lg">
-          <websdk-player ref="playerComponent" :source="videoData" />
-        </v-sheet>
+        <message-box />
       </v-col>
     </v-row>
   </v-container>
@@ -16,10 +20,11 @@
 import PlayerSources from "~/components/player-sources";
 import WebsdkPlayer from "~/components/websdk-player";
 import videoSources from '~/assets/player-sources';
+import MessageBox from "~/components/message-box";
 
 export default {
   name: "MainPage",
-  components: {WebsdkPlayer, PlayerSources},
+  components: {MessageBox, WebsdkPlayer, PlayerSources},
   head: {
     title: 'WebSDK Demo'
   },
