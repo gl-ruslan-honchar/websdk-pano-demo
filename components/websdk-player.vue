@@ -171,7 +171,7 @@
           .map(ad => ({source: ad.link, interval: ad.interval}));
 
         try {
-          console.log({sources, preRoll, midRolls, mode: this.source.mode})
+          console.table({sources, preRoll, midRolls, mode: this.source.mode})
           this.player.setSource(sources, preRoll, midRolls, this.source.mode);
           this.$msg.success('Sources were successfully loaded to the player.')
         } catch (error) {
