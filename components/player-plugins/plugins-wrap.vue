@@ -44,10 +44,10 @@
       return {
         eventId: '5c36fed232ee4b7e85a82e0d',
         plugins: [
-          { enabled: false, component: 'ClipCreate', title: 'ClipCreate' },
-          { enabled: false, component: 'Tag', title: 'Tag' },
-          { enabled: false, component: 'TagCreate', title: 'TagCreate' },
-          { enabled: false, component: 'TimeMove', title: 'TimeMove' }
+          { enabled: false, component: 'ClipCreate', title: 'Clip Create Plugin' },
+          { enabled: false, component: 'Tag', title: 'Tag Plugin' },
+          { enabled: false, component: 'TagCreate', title: 'Tag Create Plugin' },
+          { enabled: false, component: 'TimeMove', title: 'Time Move Plugin' }
         ]
       }
     },
