@@ -19,5 +19,9 @@ export default {
     { title: 'Test local Pano video 2', link: '/websdk-pano-demo/pano-test2.mp4'},
     { title: 'Test Pano video 3', link: 'https://content.you.pixellot.tv/events/60647fca01de9f4d0aaea3dd/pano/panorama.m3u8' },
     { title: 'Custom link', link: '', allowCustom: true }
+  ],
+  ads: [
+    { title: 'VAST Ad 1', link: '//cdn.theoplayer.com/demos/preroll.xml' },
+    { title: 'Custom Ad link', link: '', allowCustom: true }
   ]
 }

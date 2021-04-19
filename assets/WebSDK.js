@@ -13,17 +13,5 @@ export const createPixellotPlayer = (element, options = {}) => {
     console.error('Error during setting auth information', error)
   }
 
-  const player = PixellotWebSDK.Player(element, options);
-
-  try {
-    player.setTitle('Pixellot Player');
-  } catch (error) {
-    console.error('Error during setting player title', error)
-  }
-
-  return player;
+  return PixellotWebSDK.Player(element, options);
 };
-
-export const eventId = '5c36fed232ee4b7e85a82e0d';
-export const WebSDKPlugins = window['pixellot-web-sdk'].Plugins;
-export const SDKApi = window['pixellot-web-sdk'].SDKApi;

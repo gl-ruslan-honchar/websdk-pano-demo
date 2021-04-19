@@ -3,28 +3,30 @@
 </template>
 
 <script>
-  import {WebSDKPlugins, SDKApi, eventId} from "~/assets/WebSDK";
-
   export default {
     name: "time-move",
     props: {
       player: {
         type: Object,
         default: null
+      },
+      eventId: {
+        type: String,
+        default: ''
       }
     },
     mounted() {
       if (this.player) {
         this.registerPlugin()
-        this.$root.$emit('message', { title: '`Time Move` Plugin Registered.', type: 'success' })
+        this.$msg.success('`Time Move` Plugin Registered.')
       } else {
-        this.$root.$emit('message-error', 'Failed to register `Time Move` plugin as player is not present!')
+        this.$msg.error('Failed to register `Time Move` plugin as player is not present!')
       }
     },
     methods: {
 
       registerPlugin() {
-        const {TimeMovePlugin} = WebSDKPlugins;
+        const {TimeMovePlugin} = window['pixellot-web-sdk'].Plugins;
         const options = {}
 
         this.player.registerPlugin(TimeMovePlugin, options)

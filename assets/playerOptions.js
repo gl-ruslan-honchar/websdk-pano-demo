@@ -3,7 +3,7 @@ export default {
     pano: {
       showZoomUI: true,
       defaultZoom: 3,
-      minZoom: 2.5,
+      minZoom: 1,
       maxZoom: 5,
     }
   },

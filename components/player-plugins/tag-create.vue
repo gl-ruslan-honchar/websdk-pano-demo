@@ -1,40 +1,31 @@
 <template>
   <div>
-    <v-card>
-      <v-toolbar flat color="blue-grey" tile dark height="40px">
-        <v-toolbar-title>Tag Create Plugin</v-toolbar-title>
-      </v-toolbar>
-
-      <v-divider></v-divider>
-
-      <v-card-actions>
-        <v-btn color="success" depressed @click="showTagsUI">Show tags UI</v-btn>
-        <v-btn color="success" depressed @click="hideTagsUI">Hide tags UI</v-btn>
-        <v-btn color="success" depressed @click="showTagBtn">Show tag button</v-btn>
-        <v-btn color="success" depressed @click="hideTagBtn">Hide tag button</v-btn>
-        <v-spacer></v-spacer>
-      </v-card-actions>
-    </v-card>
+    <v-btn color="success" depressed @click="showTagsUI">Show tags UI</v-btn>
+    <v-btn color="success" depressed @click="hideTagsUI">Hide tags UI</v-btn>
+    <v-btn color="success" depressed @click="showTagBtn">Show tag button</v-btn>
+    <v-btn color="success" depressed @click="hideTagBtn">Hide tag button</v-btn>
   </div>
 </template>
 
 <script>
-  import {WebSDKPlugins, SDKApi, eventId} from "~/assets/WebSDK";
-
   export default {
     name: "tag-create",
     props: {
       player: {
         type: Object,
         default: null
+      },
+      eventId: {
+        type: String,
+        default: ''
       }
     },
     mounted() {
       if (this.player) {
         this.registerPlugin()
-        this.$root.$emit('message', { title: '`Tag Create` Plugin Registered.', type: 'success' })
+        this.$msg.success('`Tag Create` Plugin Registered.')
       } else {
-        this.$root.$emit('message-error', 'Failed to register `Tag Create` plugin as player is not present!')
+        this.$msg.error('Failed to register `Tag Create` plugin as player is not present!')
       }
     },
     methods: {
@@ -54,7 +45,8 @@
       },
 
       registerPlugin() {
-        const {TagCreatePlugin} = WebSDKPlugins;
+        const {Plugins, SDKApi} = window['pixellot-web-sdk'];
+        const {TagCreatePlugin} = Plugins;
         const vm = this
 
         const options = {
@@ -62,7 +54,7 @@
             const pts = Math.round(time * 1000);
 
             const createTagOptions = {
-              targetId: eventId,
+              targetId: vm.eventId,
               type: 'basketball_dunk',
               timePTS: pts,
               videoType: 'vod',
@@ -79,10 +71,10 @@
                 return plainResponse.json();
               })
               .then(({ data }) => {
-                vm.$root.$emit('message', `Tag creation request sent: Type - ${data.type}, ID - ${data.id}`);
+                vm.$msg.success(`Tag creation request sent: Type - ${data.type}, ID - ${data.id}`);
               })
               .catch((error) => {
-                vm.$root.$emit('message-error', `Tag creation request failed`);
+                vm.$msg.error(`Tag creation request failed`);
               });
           }
         }

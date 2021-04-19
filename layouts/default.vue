@@ -17,11 +17,8 @@
             {{ new Date().getFullYear() }} — <strong>Pixellot WebSDK</strong>
           </v-col>
           <v-col class="text-center text-md-right py-4 white--text" cols="12" md="5" sm="12">
-            <v-btn href="https://gl-ruslan-honchar.github.io/WebSDK-docs/guide/" target="_blank" color="white" rounded text>
-              Developers Docs.v1
-            </v-btn>
-            <v-btn href="/websdk-pano-demo/docs/index.html" target="_blank" color="white" rounded text>
-              Developers Docs.v2
+            <v-btn href="https://club.dev.pixellot.tv/assets/docs/websdk/Player.html" target="_blank" color="white" rounded text>
+              Documentation Link
             </v-btn>
           </v-col>
         </v-row>

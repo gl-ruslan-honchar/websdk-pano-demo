@@ -26,7 +26,9 @@ export default {
   },
 
   css: ['~/assets/main'],
-  plugins: [],
+  plugins: [
+    '~/plugins/messages'
+  ],
 
   ssr: false,
   target: 'static',
