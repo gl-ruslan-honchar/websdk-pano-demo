@@ -1,10 +1,40 @@
 export default {
   configuration: {
-    pano: {
-      showZoomUI: true,
-      defaultZoom: 3,
-      minZoom: 1,
-      maxZoom: 5,
+    interaction: {
+      pano: {
+        showZoomUI: false,
+        autoHideZoomUI: 2500,
+
+        disablePan: false,
+        disableZoom: false,
+        disableXAxisPan: false,
+        disableYAxisPan: false,
+
+        minZoom: 1,
+        maxZoom: 7,
+        defaultZoom: 1,
+        zoomPoint: 0.1,
+
+        contain: 'outside',
+        canvas: true
+      },
+      hd: {
+        showZoomUI: false,
+        autoHideZoomUI: 2500,
+
+        disablePan: true,
+        disableZoom: true,
+        disableXAxisPan: true,
+        disableYAxisPan: true,
+
+        minZoom: 1,
+        maxZoom: 7,
+        defaultZoom: 1,
+        zoomPoint: 0.1,
+
+        contain: 'outside',
+        canvas: true
+      }
     }
   },
   zoomPointOptions: [

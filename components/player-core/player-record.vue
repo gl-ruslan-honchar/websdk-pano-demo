@@ -31,15 +31,15 @@
     methods: {
       startRecording () {
         this.$msg.warning('This feature is not yet implemented. Coming soon.');
-        // this.player.recorder.startRecording()
+        this.player.recorder.startRecording()
       },
       stopRecording () {
         this.$msg.warning('This feature is not yet implemented. Coming soon.');
-        // this.player.recorder.stopRecording()
+        this.player.recorder.stopRecording()
       },
       saveRecording () {
         this.$msg.warning('This feature is not yet implemented. Coming soon.');
-        // this.player.recorder.saveRecording()
+        this.player.recorder.saveRecording()
       }
     }
   }

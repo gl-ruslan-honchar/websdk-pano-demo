@@ -20,6 +20,9 @@
           </v-card-text>
         </v-card>
       </v-col>
+      <v-col cols="12">
+        <div id="placeholder"></div>
+      </v-col>
     </v-row>
 
     <v-row class="my-6">
@@ -47,18 +50,20 @@
                 <v-expansion-panel-header>
                   <span>
                     <v-icon color="secondary" class="mr-4">mdi-panorama</v-icon>
-                    Pano/zoom
+                    <v-badge bordered color="green" content="beta">
+                      Interaction mode (pano/hd)
+                    </v-badge>
                   </span>
                 </v-expansion-panel-header>
                 <v-expansion-panel-content>
-                  <player-pano :player="player"/>
+                  <player-interaction :player="player"/>
                 </v-expansion-panel-content>
               </v-expansion-panel>
               <v-expansion-panel>
                 <v-expansion-panel-header>
                   <span>
                     <v-icon color="secondary" class="mr-4">mdi-compare</v-icon>
-                    <v-badge bordered color="green" content="beta">
+                    <v-badge bordered color="orange" content="alfa">
                       Theme
                     </v-badge>
                   </span>
@@ -71,7 +76,7 @@
                 <v-expansion-panel-header>
                   <span>
                     <v-icon color="secondary" class="mr-4">mdi-image-filter-center-focus-strong</v-icon>
-                    <v-badge bordered color="green" content="beta">
+                    <v-badge bordered color="orange" content="alfa">
                       Recording/clipping
                     </v-badge>
                   </span>
@@ -114,13 +119,13 @@
   import PlayerSources from "~/components/player-core/player-sources";
   import videoSources from "~/assets/player-sources";
   import MessageBox from "~/components/message-box";
-  import PlayerPano from "~/components/player-core/player-pano";
+  import PlayerInteraction from "~/components/player-core/player-interaction";
   import PlayerRecord from "~/components/player-core/player-record";
   import PlayerCommon from "~/components/player-core/player-common";
 
   export default {
     name: "websdk-player",
-    components: {PlayerCommon, PlayerRecord, PlayerPano, MessageBox, PlayerSources, PluginsWrap, PlayerTheme},
+    components: {PlayerCommon, PlayerRecord, PlayerInteraction, MessageBox, PlayerSources, PluginsWrap, PlayerTheme},
     data() {
       return {
         toggles: [],
@@ -143,6 +148,8 @@
 
       try {
         this.player = createPixellotPlayer(this.$refs.player, this.playerOptions.configuration);
+
+        window.player = this.player;
 
         this.loadSource()
       } catch (error) {
@@ -171,8 +178,12 @@
           .map(ad => ({source: ad.link, interval: ad.interval}));
 
         try {
-          console.table({sources, preRoll, midRolls, mode: this.source.mode})
-          this.player.setSource(sources, preRoll, midRolls, this.source.mode);
+          console.group('Player sources')
+          console.log(`Start mode '${this.source.mode}'`)
+          console.log(sources)
+          console.log({preRoll, midRolls})
+          console.groupEnd()
+          this.player.setSource(sources, preRoll, midRolls, this.source.mode)
           this.$msg.success('Sources were successfully loaded to the player.')
         } catch (error) {
           this.$msg.error('Some error occurred during setting sources to the player.');

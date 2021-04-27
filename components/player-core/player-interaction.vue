@@ -1,8 +1,8 @@
 <template>
   <div>
     <v-row class="py-6">
-      <v-col cols="12" md="2" sm="6">
-        <strong>Pan/zoom actions</strong>
+      <v-col cols="12" md="2" sm="12">
+        <strong>Configuration actions</strong>
 
         <div class="mt-3">
           <div>
@@ -30,63 +30,34 @@
             </v-btn>
           </div>
         </div>
-      </v-col>
-      <v-col cols="12" md="10" sm="6">
-        <strong>Zoom configs</strong>
 
-        <v-row class="mt-3">
-          <v-col cols="12" md="4" sm="6">
-            <v-select
-              v-model="playerOptions.configuration.pano.defaultZoom"
-              :items="playerOptions.zoomOptions"
-              item-text="title"
-              item-value="value"
-              label="Default zoom level"
-            />
-          </v-col>
-          <v-col cols="12" md="4" sm="6">
-            <v-select
-              v-model="playerOptions.configuration.pano.minZoom"
-              :items="playerOptions.zoomOptions"
-              item-text="title"
-              item-value="value"
-              label="Min zoom"
-            />
-          </v-col>
-          <v-col cols="12" md="4" sm="6">
-            <v-select
-              v-model="playerOptions.configuration.pano.maxZoom"
-              :items="playerOptions.zoomOptions"
-              item-text="title"
-              item-value="value"
-              label="Max zoom"
-            />
-          </v-col>
-          <v-col cols="12" md="12" sm="12">
-            <v-checkbox v-model="playerOptions.configuration.pano.showZoomUI" label="Show zoom on player UI"/>
-          </v-col>
-        </v-row>
-        <v-row>
-          <v-col cols="12" md="5" sm="12">
-            <strong>Configuration actions</strong>
-
-            <div>
-              <v-btn class="mt-3" @click="resetVideoPositions" :loading="resetting"
-                     :disabled="resetting || applying" color="teal" outlined>
-                Reset
-                <v-icon>mdi-restart</v-icon>
-                <template v-slot:loader>
+        <div class="mt-3">
+          <v-btn class="mt-3" @click="resetVideoPositions" :loading="resetting"
+                 :disabled="resetting || applying" color="teal" outlined>
+            Reset
+            <v-icon>mdi-restart</v-icon>
+            <template v-slot:loader>
                   <span class="custom-loader">
                     <v-icon light>mdi-cached</v-icon>
                   </span>
-                </template>
-              </v-btn>
-              <v-btn class="mt-3" @click="applyOptions" :loading="applying" :disabled="applying || resetting"
-                     color="teal" outlined>
-                Apply
-                <v-icon>mdi-check</v-icon>
-              </v-btn>
-            </div>
+            </template>
+          </v-btn>
+          <v-btn class="mt-3" @click="applyOptions" :loading="applying" :disabled="applying || resetting"
+                 color="teal" outlined>
+            Apply
+            <v-icon>mdi-check</v-icon>
+          </v-btn>
+        </div>
+      </v-col>
+      <v-col cols="12" md="10" sm="12">
+        <v-row>
+          <v-col cols="6">
+            <h4>HD Mode</h4>
+            <player-interaction-table :config="interactionConfig.hd"/>
+          </v-col>
+          <v-col cols="6">
+            <h4>Pano Mode</h4>
+            <player-interaction-table :config="interactionConfig.pano"/>
           </v-col>
         </v-row>
       </v-col>
@@ -96,9 +67,11 @@
 
 <script>
   import playerOptions from "~/assets/playerOptions";
+  import PlayerInteractionTable from "~/components/player-core/player-interaction-table";
 
   export default {
-    name: "player-pano",
+    name: "player-interaction",
+    components: {PlayerInteractionTable},
     props: {
       player: {
         type: Object,
@@ -110,13 +83,13 @@
         applying: false,
         resetting: false,
 
-        playerOptions,
+        interactionConfig: playerOptions.configuration.interaction,
       }
     },
     methods: {
       applyOptions() {
         this.applying = true;
-        this.player.updateOptions(this.playerOptions.configuration);
+        this.player.updateOptions({interaction: this.interactionConfig});
         this.resetVideoPositions();
       },
 
@@ -141,7 +114,7 @@
 
       resetVideoPositions() {
         this.resetting = !this.applying;
-        this.player.plugins.pano.reset();
+        this.player.plugins.interaction.reset();
 
         setTimeout(() => {
           this.resetting = false;
