@@ -33,7 +33,7 @@ export default {
         zoomPoint: 0.1,
 
         contain: 'outside',
-        canvas: true
+        canvas: false
       }
     }
   },
