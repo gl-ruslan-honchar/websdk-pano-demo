@@ -21,7 +21,7 @@
         </v-card>
       </v-col>
       <v-col cols="12">
-        <div id="placeholder"></div>
+        <div id="placeholder" class="overflow-auto"></div>
       </v-col>
     </v-row>
 
