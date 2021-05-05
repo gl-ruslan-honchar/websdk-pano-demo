@@ -33,7 +33,11 @@
         </td>
       </tr>
       <tr>
-        <td>Canvas video rendering</td>
+        <td>
+          <v-badge bordered color="orange" content="alfa">
+            Canvas video rendering
+          </v-badge>
+        </td>
         <td>
           <v-switch v-model="config.canvas" label="Canvas rendering"/>
         </td>

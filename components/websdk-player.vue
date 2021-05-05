@@ -7,13 +7,14 @@
             <v-icon color="secondary" class="mr-4" light large>mdi-play</v-icon>
             <v-toolbar-title>Pixellot Player</v-toolbar-title>
             <v-spacer></v-spacer>
+            <v-switch v-model="isDemoMode" label="Demo mode" />
           </v-toolbar>
           <v-card-text class="grey lighten-4">
             <v-row class="pa-lg-6">
-              <v-col cols="12" lg="6">
+              <v-col cols="12" :lg="isDemoMode ? 12 : 6">
                 <div ref="player" id="player"></div>
               </v-col>
-              <v-col cols="12" lg="6">
+              <v-col v-if="!isDemoMode" cols="12" lg="6">
                 <message-box/>
               </v-col>
             </v-row>
@@ -21,11 +22,11 @@
         </v-card>
       </v-col>
       <v-col cols="12">
-        <div id="placeholder" class="overflow-auto"></div>
+        <div id="placeholder" class="overflow-auto" style="max-width: 900px;max-height: 500px;margin: 0 auto"></div>
       </v-col>
     </v-row>
 
-    <v-row class="my-6">
+    <v-row v-if="!isDemoMode" class="my-6">
       <v-col cols="12">
         <v-card>
           <v-toolbar flat>
@@ -94,7 +95,7 @@
       </v-col>
     </v-row>
 
-    <v-row class="my-6">
+    <v-row v-if="!isDemoMode" class="my-6">
       <v-col cols="12">
         <v-card>
           <v-toolbar flat>
@@ -130,6 +131,7 @@
       return {
         toggles: [],
 
+        isDemoMode: false,
         player: null,
         playerOptions,
         source: {
@@ -154,6 +156,15 @@
         this.loadSource()
       } catch (error) {
         console.log(error)
+      }
+    },
+    watch: {
+      '$route': {
+        deep: true,
+        immediate: true,
+        handler() {
+          this.isDemoMode = Boolean(this.$route.query.demo)
+        }
       }
     },
     methods: {
