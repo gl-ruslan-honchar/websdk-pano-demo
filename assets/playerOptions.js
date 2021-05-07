@@ -1,5 +1,11 @@
 export default {
   configuration: {
+    theme: {
+      main: 'pxlt'
+    },
+    recorder: {
+      enable: true
+    },
     interaction: {
       pano: {
         showZoomUI: false,

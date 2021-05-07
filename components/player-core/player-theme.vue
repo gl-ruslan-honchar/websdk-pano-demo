@@ -24,7 +24,7 @@ export default {
   },
   data () {
     return {
-      activeThemes: 0,
+      activeThemes: 1,
       warningShown: false
     }
   },

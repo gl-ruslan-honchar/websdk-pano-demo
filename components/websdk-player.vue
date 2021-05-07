@@ -149,6 +149,10 @@
       }
 
       try {
+        if (this.$route.query.mode && ['hd', 'pano'].includes(this.$route.query.mode)) {
+          this.source.mode = this.$route.query.mode;
+        }
+
         this.player = createPixellotPlayer(this.$refs.player, this.playerOptions.configuration);
 
         window.player = this.player;

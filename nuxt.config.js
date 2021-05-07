@@ -14,6 +14,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/websdk-pano-demo/zoom-icon.png' },
+      { rel: 'stylesheet', type: 'text/css', href: isDev ? 'http://localhost:8080/css/pxlt-theme.css' : '/websdk-pano-demo/pxlt-theme.css' },
     ],
     script: [
       { src: '//imasdk.googleapis.com/js/sdkloader/ima3.js' },
