@@ -471,14 +471,6 @@
     font-size: 1.4em;
 }
 
-.vjs-theme-dt.video-js .vjs-menu-button.vjs-menu-button-popup.vjs-control.vjs-button.vjs-max-quality-selector-button {
-    width: 9em;
-}
-.vjs-theme-dt.video-js .vjs-playback-rate-value .vjs-icon-placeholder,
-.vjs-theme-dt.video-js .vjs-max-quality-selector-button .vjs-icon-placeholder {
-    font-size: 1.2em;
-}
-
 .vjs-theme-dt.video-js .vjs-playback-rate {
     display: none;
 }
