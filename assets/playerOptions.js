@@ -1,29 +1,12 @@
 export default {
   configuration: {
     theme: {
-      main: 'pxlt'
+      main: 'default'
     },
     recorder: {
-      enable: true
+      enabled: true
     },
     interaction: {
-      pano: {
-        showZoomUI: false,
-        autoHideZoomUI: 2500,
-
-        disablePan: false,
-        disableZoom: false,
-        disableXAxisPan: false,
-        disableYAxisPan: false,
-
-        minZoom: 1,
-        maxZoom: 7,
-        defaultZoom: 1,
-        zoomPoint: 0.1,
-
-        contain: 'outside',
-        canvas: false
-      },
       hd: {
         showZoomUI: false,
         autoHideZoomUI: 2500,
@@ -40,7 +23,24 @@ export default {
 
         contain: 'outside',
         canvas: false
-      }
+      },
+      pano: {
+        showZoomUI: false,
+        autoHideZoomUI: 2500,
+
+        disablePan: false,
+        disableZoom: false,
+        disableXAxisPan: false,
+        disableYAxisPan: false,
+
+        minZoom: 1,
+        maxZoom: 7,
+        defaultZoom: 1,
+        zoomPoint: 0.1,
+
+        contain: 'outside',
+        canvas: true
+      },
     }
   },
   zoomPointOptions: [

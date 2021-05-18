@@ -24,21 +24,24 @@ export default {
   },
   data () {
     return {
-      activeThemes: 1,
+      activeThemes: 0,
       warningShown: false
     }
   },
   watch: {
-    activeThemes (val) {
-      if (val === 1) {
-        this.player && this.player.setTheme('pxlt')
-      } else {
-        this.player && this.player.setTheme('default')
-      }
+    activeThemes: {
+      immediate: true,
+      handler (val) {
+        if (val === 1) {
+          this.player && this.player.setTheme('pxlt')
+        } else {
+          this.player && this.player.setTheme('default')
+        }
 
-      if (!this.warningShown) {
-        this.$msg.warning('Changing theme is a beta feature, and it\'s not yet supported!')
-        this.warningShown = true
+        if (!this.warningShown) {
+          this.$msg.warning('Changing theme is a beta feature, and it\'s not yet supported!')
+          this.warningShown = true
+        }
       }
     }
   }
