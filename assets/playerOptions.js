@@ -8,6 +8,7 @@ export default {
     },
     interaction: {
       hd: {
+        engine: 'd3-html',
         showZoomUI: false,
         autoHideZoomUI: 2500,
 
@@ -17,14 +18,12 @@ export default {
         disableYAxisPan: true,
 
         minZoom: 1,
-        maxZoom: 7,
+        maxZoom: 5,
         defaultZoom: 1,
         zoomPoint: 0.1,
-
-        contain: 'outside',
-        canvas: false
       },
       pano: {
+        engine: 'd3-canvas',
         showZoomUI: false,
         autoHideZoomUI: 2500,
 
@@ -34,12 +33,9 @@ export default {
         disableYAxisPan: false,
 
         minZoom: 1,
-        maxZoom: 7,
+        maxZoom: 5,
         defaultZoom: 1,
         zoomPoint: 0.1,
-
-        contain: 'outside',
-        canvas: true
       },
     }
   },

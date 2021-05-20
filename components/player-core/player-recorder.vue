@@ -1,7 +1,11 @@
 <template>
   <v-row>
     <v-col cols="12">
-      <v-item-group multiple>
+      <div>
+        <v-switch v-model="recorderConfig.enabled" :disabled="true" label="Enabled"/>
+      </div>
+
+      <v-item-group :disabled="!recorderConfig.enabled" multiple>
         <v-btn color="success" @click="startRecording">
           <v-icon class="mr-4">mdi-record-rec</v-icon>
           Start Recoding
@@ -16,28 +20,57 @@
         </v-btn>
       </v-item-group>
     </v-col>
+
+    <v-col cols="12">
+      <div class="mt-3">
+        <v-btn class="mt-3" @click="applyOptions" :loading="applying" :disabled="applying"
+               color="teal" outlined>
+          Apply
+          <v-icon>mdi-check</v-icon>
+        </v-btn>
+      </div>
+    </v-col>
   </v-row>
 </template>
 
 <script>
+  import playerOptions from "~/assets/playerOptions";
+
   export default {
-    name: "player-record",
+    name: "player-recorder",
     props: {
       player: {
         type: Object,
         default: null
       }
     },
+    data() {
+      return {
+        applying: false,
+        resetting: false,
+
+        recorderConfig: playerOptions.configuration.recorder,
+      }
+    },
     methods: {
-      startRecording () {
+      applyOptions() {
+        this.applying = true;
+
+        this.player.updateOptions({recorder: this.recorderConfig});
+
+        setTimeout(() => {
+          this.applying = false;
+        }, 500);
+      },
+      startRecording() {
         this.$msg.warning('This feature is not yet implemented. Coming soon.');
         this.player.recorder.startRecording()
       },
-      stopRecording () {
+      stopRecording() {
         this.$msg.warning('This feature is not yet implemented. Coming soon.');
         this.player.recorder.stopRecording()
       },
-      saveRecording () {
+      saveRecording() {
         this.$msg.warning('This feature is not yet implemented. Coming soon.');
         this.player.recorder.saveRecording()
       }

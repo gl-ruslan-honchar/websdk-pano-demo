@@ -9,6 +9,17 @@
       </thead>
       <tbody>
       <tr>
+        <td>Interaction engine</td>
+        <td class="pt-6">
+          <v-select
+            v-model="config.engine"
+            :items="['d3-html', 'd3-canvas']"
+            label="Interaction engine"
+            solo
+          />
+        </td>
+      </tr>
+      <tr>
         <td>Disable pan</td>
         <td>
           <v-switch v-model="config.disablePan" label="Disable pan"/>
@@ -30,27 +41,6 @@
         <td>Disable Y Axis pan</td>
         <td>
           <v-switch v-model="config.disableYAxisPan" label="Disable Y Axis pan"/>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <v-badge bordered color="orange" content="alfa">
-            Canvas video rendering
-          </v-badge>
-        </td>
-        <td>
-          <v-switch v-model="config.canvas" label="Canvas rendering"/>
-        </td>
-      </tr>
-      <tr>
-        <td>Panning mode</td>
-        <td class="pt-6">
-          <v-select
-            v-model="config.contain"
-            :items="['inside', 'outside']"
-            label="Panning mode"
-            solo
-          />
         </td>
       </tr>
       <tr>

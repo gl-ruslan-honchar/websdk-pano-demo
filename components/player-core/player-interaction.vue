@@ -100,13 +100,13 @@
       moveVideo(direction) {
         switch (direction) {
           case 'up':
-            return this.player.pan(0, 25, true);
+            return this.player.panBy(0, 25);
           case 'down':
-            return this.player.pan(0, -25, true);
+            return this.player.panBy(0, -25);
           case 'left':
-            return this.player.pan(25, 0, true);
+            return this.player.panBy(25, 0);
           case 'right':
-            return this.player.pan(-25, 0, true);
+            return this.player.panBy(-25, 0);
           default:
             return;
         }

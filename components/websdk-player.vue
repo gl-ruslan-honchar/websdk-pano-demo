@@ -83,7 +83,7 @@
                   </span>
                 </v-expansion-panel-header>
                 <v-expansion-panel-content>
-                  <player-record :player="player"/>
+                  <player-recorder :player="player"/>
                 </v-expansion-panel-content>
               </v-expansion-panel>
             </v-expansion-panels>
@@ -121,12 +121,12 @@
   import videoSources from "~/assets/player-sources";
   import MessageBox from "~/components/message-box";
   import PlayerInteraction from "~/components/player-core/player-interaction";
-  import PlayerRecord from "~/components/player-core/player-record";
+  import PlayerRecorder from "~/components/player-core/player-recorder";
   import PlayerCommon from "~/components/player-core/player-common";
 
   export default {
     name: "websdk-player",
-    components: {PlayerCommon, PlayerRecord, PlayerInteraction, MessageBox, PlayerSources, PluginsWrap, PlayerTheme},
+    components: {PlayerCommon, PlayerRecorder, PlayerInteraction, MessageBox, PlayerSources, PluginsWrap, PlayerTheme},
     data() {
       return {
         toggles: [],
