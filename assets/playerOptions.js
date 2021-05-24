@@ -24,7 +24,7 @@ export default {
       },
       pano: {
         engine: 'd3-canvas',
-        showZoomUI: false,
+        showZoomUI: true,
         autoHideZoomUI: 2500,
 
         disablePan: false,
@@ -32,7 +32,7 @@ export default {
         disableXAxisPan: false,
         disableYAxisPan: false,
 
-        minZoom: 1,
+        minZoom: 0.5,
         maxZoom: 5,
         defaultZoom: 1,
         zoomPoint: 0.1,
