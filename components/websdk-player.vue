@@ -142,8 +142,8 @@
           mode: 'hd',
           preRoll: {},
           midRolls: [{link: '', interval: 10}],
-          hd: videoSources.hd[10],
-          pano: videoSources.pano[2]
+          hd: videoSources.hd[2],
+          pano: videoSources.pano[0]
         }
       }
     },
