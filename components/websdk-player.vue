@@ -19,6 +19,10 @@
               </v-col>
             </v-row>
           </v-card-text>
+<!--          <v-card-actions v-if="player" class="pa-3">-->
+<!--            <v-btn color="success" depressed @click="() => player.plugins.interaction.engine.panToCenter()">Center!!!</v-btn>-->
+<!--            <v-btn color="success" depressed @click="() => player.plugins.interaction.engine.reset()">Reset!!!</v-btn>-->
+<!--          </v-card-actions>-->
         </v-card>
       </v-col>
       <v-col cols="12">
@@ -138,8 +142,8 @@
           mode: 'hd',
           preRoll: {},
           midRolls: [{link: '', interval: 10}],
-          hd: videoSources.hd[2],
-          pano: videoSources.pano[0]
+          hd: videoSources.hd[10],
+          pano: videoSources.pano[2]
         }
       }
     },

@@ -4,7 +4,12 @@ export default {
       main: 'default'
     },
     recorder: {
-      enabled: true
+      hd: {
+        enabled: false
+      },
+      pano: {
+        enabled: true
+      }
     },
     interaction: {
       hd: {

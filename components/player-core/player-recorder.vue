@@ -1,11 +1,20 @@
 <template>
   <v-row>
-    <v-col cols="12">
-      <div>
-        <v-switch v-model="recorderConfig.enabled" :disabled="true" label="Enabled"/>
-      </div>
+    <v-col cols="12" md="10" sm="12">
+      <v-row>
+        <v-col cols="6">
+          <h4>HD Mode</h4>
+          <player-recorder-table :config="recorderConfig.hd"/>
+        </v-col>
+        <v-col cols="6">
+          <h4>Pano Mode</h4>
+          <player-recorder-table :config="recorderConfig.pano"/>
+        </v-col>
+      </v-row>
+    </v-col>
 
-      <v-item-group :disabled="!recorderConfig.enabled" multiple>
+    <v-col cols="12">
+      <v-item-group multiple>
         <v-btn color="success" @click="startRecording">
           <v-icon class="mr-4">mdi-record-rec</v-icon>
           Start Recoding
@@ -35,9 +44,11 @@
 
 <script>
   import playerOptions from "~/assets/playerOptions";
+  import PlayerRecorderTable from "~/components/player-core/player-recorder-table";
 
   export default {
     name: "player-recorder",
+    components: {PlayerRecorderTable},
     props: {
       player: {
         type: Object,
