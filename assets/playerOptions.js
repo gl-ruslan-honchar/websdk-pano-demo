@@ -13,6 +13,7 @@ export default {
     },
     interaction: {
       hd: {
+        enabled: false,
         engine: 'd3-html',
         showZoomUI: false,
         autoHideZoomUI: 2500,
@@ -28,6 +29,7 @@ export default {
         zoomPoint: 0.1,
       },
       pano: {
+        enabled: true,
         engine: 'd3-canvas',
         showZoomUI: true,
         autoHideZoomUI: 2500,

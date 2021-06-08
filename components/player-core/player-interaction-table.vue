@@ -9,6 +9,12 @@
       </thead>
       <tbody>
       <tr>
+        <td>Enabled</td>
+        <td class="pt-6">
+          <v-switch v-model="config.enabled" label="Enabled"/>
+        </td>
+      </tr>
+      <tr>
         <td>Interaction engine</td>
         <td class="pt-6">
           <v-select
